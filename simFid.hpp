@@ -162,7 +162,6 @@ void collapseRenorm(const Key<int>& K, std::array<State<Key<int>, float, float>,
  */
 void fidsim(const std::vector<float>& ovls, const std::vector<int>& doublePrep, const std::vector<int>& lossPos, const std::vector<float>& angErrs, const std::array<std::vector<float>, 15>& apl, const std::string& path, int rank){
     State<Key<int>, float, float> SFullDist, SKeyIter, STemp, SComplement;
-
     SFullDist.set(12);
     SFullDist.set(&trivOvlF);
     for (int i=0; i<6; i++){
@@ -202,7 +201,7 @@ void fidsim(const std::vector<float>& ovls, const std::vector<int>& doublePrep, 
         STemp = SFullDist;
         SVecTemp = SVec;
         compVecTemp = compVec;
-        collapseRenorm(it->first, SVecTemp, compVecTemp, temp);
+        collapseRenorm(it->first, SVecTemp, compVecTemp, STemp);
         SarS.push_back(std::move(SVecTemp));
         SarComp.push_back(std::move(compVecTemp));
     }
@@ -224,6 +223,7 @@ void fidsim(const std::vector<float>& ovls, const std::vector<int>& doublePrep, 
  * @param shuffle_path Path to a file where all 10214 combinations are shuffeled
  */
 void schedulerGHZshuffled(const std::vector<float>& ovls, std::vector<float>& angErrs, std::string path, int global_lower, int global_upper, int rank_off, int rank, int size, std::string shuffle_path){
+    
     int n=global_upper-global_lower;
     int count = 0;
     std::vector<int> todo;

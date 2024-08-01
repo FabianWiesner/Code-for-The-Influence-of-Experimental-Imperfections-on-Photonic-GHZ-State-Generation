@@ -316,6 +316,14 @@ class Key : public boost::container::flat_map<std::pair<Int, Int>, Int>{
         return true;
     } */
 
+    void incr(const Int& mode, const Int& d, const Int& num){
+        std::pair<typename Par::iterator, bool> pib;
+        pib = Par::emplace(std::make_pair(std::make_pair(mode, d), num));
+        if (!pib.second){
+            pib.first->second+= num;
+        }
+    }
+
     /**
      * @brief Applies loss with uniform probability per photon on the modes.
      * 
