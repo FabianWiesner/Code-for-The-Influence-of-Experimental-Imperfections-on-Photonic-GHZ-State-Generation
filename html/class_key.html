@@ -162,14 +162,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>clean</b> ()</td></tr
 <tr class="memitem:a4c10087175fe7690a7da82f847129be5" id="r_a4c10087175fe7690a7da82f847129be5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4c10087175fe7690a7da82f847129be5">overlapping</a> (const boost::container::flat_map&lt; Int, Int &gt; &amp;ref) const</td></tr>
 <tr class="memdesc:a4c10087175fe7690a7da82f847129be5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the <a class="el" href="class_key.html" title="Key class, that implements the functions needed for State. Inherits from boost::container::flat_map&lt;s...">Key</a> containes data of a boost::container::flat_map&lt;Int, Int&gt;.  <br /></td></tr>
 <tr class="separator:a4c10087175fe7690a7da82f847129be5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae946a1fea004a780116216f531640670" id="r_ae946a1fea004a780116216f531640670"><td class="memItemLeft" align="right" valign="top"><a id="ae946a1fea004a780116216f531640670" name="ae946a1fea004a780116216f531640670"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>incr</b> (const Int &amp;mode, const Int &amp;d, const Int &amp;num)</td></tr>
+<tr class="separator:ae946a1fea004a780116216f531640670"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8041803649705b091b8d5dc11ac1e1b9" id="r_a8041803649705b091b8d5dc11ac1e1b9"><td class="memTemplParams" colspan="2">template&lt;class Val &gt; </td></tr>
 <tr class="memitem:a8041803649705b091b8d5dc11ac1e1b9"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="#a0243888dddee680673f3bacb047d0062">SD</a>&lt; Val &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a8041803649705b091b8d5dc11ac1e1b9">loss</a> (const std::vector&lt; Int &gt; &amp;modes, const Int &amp;lossMode, Int &amp;maxLM) const</td></tr>
 <tr class="memdesc:a8041803649705b091b8d5dc11ac1e1b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies loss with uniform probability per photon on the modes.  <br /></td></tr>
 <tr class="separator:a8041803649705b091b8d5dc11ac1e1b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad3fdb8bd0cc0b9632bf5da81fa7a5700" id="r_ad3fdb8bd0cc0b9632bf5da81fa7a5700"><td class="memTemplParams" colspan="2">template&lt;class Val &gt; </td></tr>
-<tr class="memitem:ad3fdb8bd0cc0b9632bf5da81fa7a5700"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ad3fdb8bd0cc0b9632bf5da81fa7a5700">collapse</a> (const boost::container::flat_map&lt; Int, Int &gt; &amp;f, Val &amp;amp)</td></tr>
-<tr class="memdesc:ad3fdb8bd0cc0b9632bf5da81fa7a5700"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maps the current distinguishability conf to a different one - Only use for mapping to less distinguishable conf.  <br /></td></tr>
-<tr class="separator:ad3fdb8bd0cc0b9632bf5da81fa7a5700"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acec3634c86b275e8134088b43ac50562" id="r_acec3634c86b275e8134088b43ac50562"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acec3634c86b275e8134088b43ac50562">notEmpty</a> (const std::vector&lt; std::vector&lt; Int &gt; &gt; &amp;allModes) const</td></tr>
 <tr class="memdesc:acec3634c86b275e8134088b43ac50562"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the key has at least one photon in on of the modes in allModes.  <br /></td></tr>
 <tr class="separator:acec3634c86b275e8134088b43ac50562"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -444,54 +443,6 @@ template&lt;class Val &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Val The factor for the amplitude </dd></dl>
-
-</div>
-</div>
-<a id="ad3fdb8bd0cc0b9632bf5da81fa7a5700" name="ad3fdb8bd0cc0b9632bf5da81fa7a5700"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad3fdb8bd0cc0b9632bf5da81fa7a5700">&#9670;&#160;</a></span>collapse()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class Int &gt; </div>
-<div class="memtemplate">
-template&lt;class Val &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="class_key.html">Key</a>&lt; Int &gt;::collapse </td>
-          <td>(</td>
-          <td class="paramtype">const boost::container::flat_map&lt; Int, Int &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>f</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">Val &amp;</td>          <td class="paramname"><span class="paramname"><em>amp</em></span>&#160;)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Maps the current distinguishability conf to a different one - Only use for mapping to less distinguishable conf. </p>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">Val</td><td>Amplitude type that is used in the <a class="el" href="class_state.html" title="Definition of the data structure used to represent states. Inherits from boost::container::flat_map&lt;K...">State</a> </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">f</td><td>Encodes the mapping {old D.mode : new Dmode} </td></tr>
-    <tr><td class="paramname">amp</td><td>Amplitude for this key before the mapping </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>

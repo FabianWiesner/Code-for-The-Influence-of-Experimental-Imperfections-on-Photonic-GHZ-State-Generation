@@ -188,9 +188,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>normalise</b> ()</td>
 <tr class="memitem:a48fe660636cea353109871a94946f17a" id="r_a48fe660636cea353109871a94946f17a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a48fe660636cea353109871a94946f17a">loss</a> (const std::vector&lt; Int &gt; &amp;)</td></tr>
 <tr class="memdesc:a48fe660636cea353109871a94946f17a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performes loss of one photons on the modes in modes.  <br /></td></tr>
 <tr class="separator:a48fe660636cea353109871a94946f17a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac0c3fa38a1dcd8c181b2bd53d1bc1178" id="r_ac0c3fa38a1dcd8c181b2bd53d1bc1178"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac0c3fa38a1dcd8c181b2bd53d1bc1178">collapse</a> (const <a class="el" href="class_key.html">Key</a> &amp;)</td></tr>
-<tr class="memdesc:ac0c3fa38a1dcd8c181b2bd53d1bc1178"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maps the current distinguishability conf to a different one - Only use for mapping to less distinguishable conf.  <br /></td></tr>
-<tr class="separator:ac0c3fa38a1dcd8c181b2bd53d1bc1178"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6c84c3722f10ac618c471dc0a9299e7" id="r_af6c84c3722f10ac618c471dc0a9299e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af6c84c3722f10ac618c471dc0a9299e7">notEmpty</a> (const std::vector&lt; std::vector&lt; Int &gt; &gt; &amp;)</td></tr>
 <tr class="memdesc:af6c84c3722f10ac618c471dc0a9299e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Filters out these key that haven't at least one photon in on of the modes in allModes.  <br /></td></tr>
 <tr class="separator:af6c84c3722f10ac618c471dc0a9299e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -496,41 +493,6 @@ template&lt;class <a class="el" href="class_key.html">Key</a> , class Val , clas
   <table class="params">
     <tr><td class="paramname">U</td><td>Unitary, i.e. here a number with abs value 1 </td></tr>
     <tr><td class="paramname">mode</td><td>mode affected by the operation </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="ac0c3fa38a1dcd8c181b2bd53d1bc1178" name="ac0c3fa38a1dcd8c181b2bd53d1bc1178"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac0c3fa38a1dcd8c181b2bd53d1bc1178">&#9670;&#160;</a></span>collapse()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class <a class="el" href="class_key.html">Key</a> , class Val , class Real &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="class_state.html">State</a>&lt; <a class="el" href="class_key.html">Key</a>, Val, Real &gt;::collapse </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="class_key.html">Key</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>K</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Maps the current distinguishability conf to a different one - Only use for mapping to less distinguishable conf. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">K</td><td><a class="el" href="class_key.html" title="Key class, that implements the functions needed for State. Inherits from boost::container::flat_map&lt;s...">Key</a> that encodes the target distinguishability configuration. </td></tr>
   </table>
   </dd>
 </dl>

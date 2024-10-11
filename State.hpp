@@ -312,13 +312,6 @@ class State : public boost::container::flat_map<Key, Val>{
         inline void loss(const std::vector<Int>&);
 
         /**
-        * @brief Maps the current distinguishability conf to a different one - Only use for mapping to less distinguishable conf.
-        * 
-        * @param K Key that encodes the target distinguishability configuration.
-        */
-        inline void collapse(const Key&);
-
-        /**
         * @brief Filters out these key that haven't at least one photon in on of the modes in allModes.
         * 
         * @param allModes Spatial&Distinguishability modes to check. 
@@ -585,28 +578,6 @@ inline void State<Key, Val, Real>::loss(const std::vector<Int>& modes){
     if (maxLM>lossMode)
         lossMode = maxLM;
     clean();
-}
-
-template<class Key, class Val, class Real>
-inline void State<Key, Val, Real>::collapse(const Key& K){
-    boost::container::flat_map<Int, Int> f;
-    Int j = 0;
-    for (typename Key::const_iterator it=K.cbegin(); it!=K.cend(); it++){
-        f[j] = it->first.second;
-        j++;}
-    Key K2;
-    Par p;
-    Val v;
-    std::pair<typename Par::iterator, bool> pib;
-    for (typename Par::iterator it = Par::begin(); it != Par::end(); it++){
-        K2 = it->first;
-        v = it->second;
-        K2.collapse(f, v);
-        pib = p.emplace(std::make_pair(K2, v));
-        if (!pib.second)
-            pib.first->second += v;
-    }
-    set(std::move(p));
 }
 
 template<class Key, class Val, class Real>

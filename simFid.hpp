@@ -123,31 +123,6 @@ inline void circuitFid(State<K, V, R>& S, const std::vector<int>& lossPos, const
     detloss(S, 35, {8, 9}, lossPos);
 }
 
-/**
- * @brief Maps a the perfectly distinguishable configuration to a partially distinguishability conf.
- * 
- * @param K Key that encodes the desired distinguishability configuration
- * @param SVec States that should be used for the result, completly overlapping with GHZ in spatial and polarization and acceptable measurement results.
- * @param comp States that are used for normalization, i.e. part of the measurement result but orthogonal to GHZ, as map is not norm preserving
- * @param S Part of the state that is orthogonal to all acceptable measurement results
- */
-void collapseRenorm(const Key<int>& K, std::array<State<Key<int>, float, float>, 8>& SVec, std::array<State<Key<int>, float, float>, 8>& comp, State<Key<int>, float, float>& S){
-    float n=0.0;
-    for (int i = 0; i<8; i++){
-        SVec[i].collapse(K);
-        comp[i].collapse(K);
-        n += std::pow(SVec[i].norm(),2);
-        n += std::pow(comp[i].norm(),2);
-    }
-    S.collapse(K);
-    n += std::pow(S.norm(),2);
-    if (n!=0.0){
-    n = 1/std::sqrt(n);
-    for (int i = 0; i<8; i++){
-        SVec[i].mul(n);
-        comp[i].mul(n);
-    }}
-}
 
 /**
  * @brief Computes the fidelity for a given parameters.
@@ -161,34 +136,7 @@ void collapseRenorm(const Key<int>& K, std::array<State<Key<int>, float, float>,
  * @param rank Rank of the process (used for saving the outcome)
  */
 void fidsim(const std::vector<float>& ovls, const std::vector<int>& doublePrep, const std::vector<int>& lossPos, const std::vector<float>& angErrs, const std::array<std::vector<float>, 15>& apl, const std::string& path, int rank){
-    State<Key<int>, float, float> SFullDist, SKeyIter, STemp, SComplement;
-    SFullDist.set(12);
-    SFullDist.set(&trivOvlF);
-    for (int i=0; i<6; i++){
-        if (std::find(doublePrep.begin(), doublePrep.end(), i)!=doublePrep.end())
-            SFullDist.addPhoton({(float) i, 0.0}, 2*i, 2);
-        else
-            SFullDist.addPhoton({(float) i, 0.0}, 2*i, 1);
-    }
-    circuitFid(SFullDist, lossPos, apl);
-
-    std::array<std::pair<State<Key<int>, float, float>, State<Key<int>, float, float>>, 8> SV;
-    std::vector<std::array<State<Key<int>, float, float>, 8>> SarS, SarComp;
-    std::vector<boost::container::flat_map<int, int>> 
-    g = {{{0, 1}, {1, 0}, {6, 1}, {7, 0}, {10, 1}, {11, 0}}, {{0, 0}, {1, 1}, {6, 0}, {7, 1}, {10, 0}, {11, 1}}};
-    std::vector<std::vector<int>> occModes={{0, 6, 10}, {1, 7, 11}};
-    std::array<State<Key<int>, float, float>, 8> SVec, compVec, SVecTemp, compVecTemp;
-    std::vector<boost::container::flat_map<int,int>> FirstMeasTargets;
-    for (int p1: {0, 1})
-        for (int p2: {0, 1})
-            for (int p4: {0, 1}){
-                STemp = SFullDist;
-                SComplement = STemp.overlapWithFilter({{2, 1-p1}, {3, p1}, {4, 1-p2}, {5, p2}, {8, 1-p4}, {9, p4}}, occModes, g);
-                FirstMeasTargets.push_back({{2, 1-p1}, {3, p1}, {4, 1-p2}, {5, p2}, {8, 1-p4}, {9, p4}});
-                SVec[p4+2*p2+4*p1] = std::move(STemp);
-                compVec[p4+2*p2+4*p1] = std::move(SComplement);
-                }
-    SFullDist.overlapCompl(FirstMeasTargets, occModes);
+    State<Key<int>, float, float> SKeyIter, STemp, STemp2, SComplement;
     SKeyIter.set(12);
     SKeyIter.set(&trivOvlF);
     for (int i=0; i<6; i++){
@@ -197,13 +145,28 @@ void fidsim(const std::vector<float>& ovls, const std::vector<int>& doublePrep, 
         else
             SKeyIter.addPhoton({(float) i, 0.7}, 2*i, 1);
     }
+    std::array<State<Key<int>, float, float>, 8> SVec, compVec;
+    std::vector<std::array<State<Key<int>, float, float>, 8>> SarS, SarComp;
+    std::vector<boost::container::flat_map<int, int>> 
+    g = {{{0, 1}, {1, 0}, {6, 1}, {7, 0}, {10, 1}, {11, 0}}, {{0, 0}, {1, 1}, {6, 0}, {7, 1}, {10, 0}, {11, 1}}};
+    std::vector<std::vector<int>> occModes;
+    occModes = {{0, 6, 10}, {1, 7, 11}};
     for (typename State<Key<int>, float, float>::iterator it = SKeyIter.begin(); it!=SKeyIter.end();it++){
-        STemp = SFullDist;
-        SVecTemp = SVec;
-        compVecTemp = compVec;
-        collapseRenorm(it->first, SVecTemp, compVecTemp, STemp);
-        SarS.push_back(std::move(SVecTemp));
-        SarComp.push_back(std::move(compVecTemp));
+        STemp.clear();
+        STemp.set(it->first,1.0);
+        STemp.set(12);
+        STemp.set(&trivOvlF);
+        circuitFid(STemp, lossPos, apl);
+        for (int p1: {0, 1})
+            for (int p2: {0, 1})
+                for (int p4: {0, 1}){
+                    STemp2 = STemp;
+                    SComplement = STemp2.overlapWithFilter({{2, 1-p1}, {3, p1}, {4, 1-p2}, {5, p2}, {8, 1-p4}, {9, p4}}, occModes, g);
+                    SVec[p4+2*p2+4*p1] = std::move(STemp2);
+                    compVec[p4+2*p2+4*p1] = std::move(SComplement);
+                    }
+        SarS.push_back(SVec);
+        SarComp.push_back(compVec);
     }
     for (float o : ovls)
         fid(SarS, SarComp, o, angErrs, doublePrep, lossPos, path, rank);

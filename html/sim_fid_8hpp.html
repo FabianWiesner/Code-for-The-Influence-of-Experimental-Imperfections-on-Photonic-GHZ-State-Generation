@@ -110,9 +110,6 @@ Functions</h2></td></tr>
 <tr class="memitem:ab45ce98c3a36863c94eb54555d763f0f"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ab45ce98c3a36863c94eb54555d763f0f">circuitFid</a> (<a class="el" href="class_state.html">State</a>&lt; K, V, R &gt; &amp;S, const std::vector&lt; int &gt; &amp;lossPos, const std::array&lt; std::vector&lt; V &gt;, 15 &gt; &amp;apl)</td></tr>
 <tr class="memdesc:ab45ce98c3a36863c94eb54555d763f0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The photonic circuit we considered to create a GHZ state.  <br /></td></tr>
 <tr class="separator:ab45ce98c3a36863c94eb54555d763f0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a48e0831abcc60fe32ad42d19a7aa20a7" id="r_a48e0831abcc60fe32ad42d19a7aa20a7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a48e0831abcc60fe32ad42d19a7aa20a7">collapseRenorm</a> (const <a class="el" href="class_key.html">Key</a>&lt; int &gt; &amp;K, std::array&lt; <a class="el" href="class_state.html">State</a>&lt; <a class="el" href="class_key.html">Key</a>&lt; int &gt;, float, float &gt;, 8 &gt; &amp;SVec, std::array&lt; <a class="el" href="class_state.html">State</a>&lt; <a class="el" href="class_key.html">Key</a>&lt; int &gt;, float, float &gt;, 8 &gt; &amp;comp, <a class="el" href="class_state.html">State</a>&lt; <a class="el" href="class_key.html">Key</a>&lt; int &gt;, float, float &gt; &amp;S)</td></tr>
-<tr class="memdesc:a48e0831abcc60fe32ad42d19a7aa20a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maps a the perfectly distinguishable configuration to a partially distinguishability conf.  <br /></td></tr>
-<tr class="separator:a48e0831abcc60fe32ad42d19a7aa20a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae3f20c8e2bef8829f9df7f52f52f3430" id="r_ae3f20c8e2bef8829f9df7f52f52f3430"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae3f20c8e2bef8829f9df7f52f52f3430">fidsim</a> (const std::vector&lt; float &gt; &amp;ovls, const std::vector&lt; int &gt; &amp;doublePrep, const std::vector&lt; int &gt; &amp;lossPos, const std::vector&lt; float &gt; &amp;angErrs, const std::array&lt; std::vector&lt; float &gt;, 15 &gt; &amp;apl, const std::string &amp;path, int rank)</td></tr>
 <tr class="memdesc:ae3f20c8e2bef8829f9df7f52f52f3430"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the fidelity for a given parameters.  <br /></td></tr>
 <tr class="separator:ae3f20c8e2bef8829f9df7f52f52f3430"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -223,48 +220,6 @@ template&lt;class K , class V , class R &gt; </div>
   <table class="params">
     <tr><td class="paramname">S</td><td><a class="el" href="class_state.html" title="Definition of the data structure used to represent states. Inherits from boost::container::flat_map&lt;K...">State</a> to compute to overlap for </td></tr>
     <tr><td class="paramname">a</td><td>phase for GHZ state - either 1 or -1 </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a48e0831abcc60fe32ad42d19a7aa20a7" name="a48e0831abcc60fe32ad42d19a7aa20a7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a48e0831abcc60fe32ad42d19a7aa20a7">&#9670;&#160;</a></span>collapseRenorm()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void collapseRenorm </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="class_key.html">Key</a>&lt; int &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>K</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::array&lt; <a class="el" href="class_state.html">State</a>&lt; <a class="el" href="class_key.html">Key</a>&lt; int &gt;, float, float &gt;, 8 &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>SVec</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::array&lt; <a class="el" href="class_state.html">State</a>&lt; <a class="el" href="class_key.html">Key</a>&lt; int &gt;, float, float &gt;, 8 &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>comp</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="class_state.html">State</a>&lt; <a class="el" href="class_key.html">Key</a>&lt; int &gt;, float, float &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>S</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Maps a the perfectly distinguishable configuration to a partially distinguishability conf. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">K</td><td><a class="el" href="class_key.html" title="Key class, that implements the functions needed for State. Inherits from boost::container::flat_map&lt;s...">Key</a> that encodes the desired distinguishability configuration </td></tr>
-    <tr><td class="paramname">SVec</td><td>States that should be used for the result, completly overlapping with GHZ in spatial and polarization and acceptable measurement results. </td></tr>
-    <tr><td class="paramname">comp</td><td>States that are used for normalization, i.e. part of the measurement result but orthogonal to GHZ, as map is not norm preserving </td></tr>
-    <tr><td class="paramname">S</td><td>Part of the state that is orthogonal to all acceptable measurement results </td></tr>
   </table>
   </dd>
 </dl>

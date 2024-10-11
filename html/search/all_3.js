@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['detloss_0',['detloss',['../sim_aux_8hpp.html#aa3f84d2718cf07cb4e39c5fa09bf45fb',1,'simAux.hpp']]]
+  ['3_20–_20license_20conditions_0',['Section 3 – License Conditions.',['../md__2_users_2fabianwiesner_2_desktop_2_work_2_photonic_q_c_2_fid_code_update_2simphoqcirc_2_l_i_c_e_n_s_e.html#autotoc_md5',1,'']]]
 ];

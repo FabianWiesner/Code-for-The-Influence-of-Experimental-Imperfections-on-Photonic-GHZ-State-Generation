@@ -363,31 +363,6 @@ class Key : public boost::container::flat_map<std::pair<Int, Int>, Int>{
     }
 
     /**
-     * @brief Maps the current distinguishability conf to a different one - Only use for mapping to less distinguishable conf.
-     * 
-     * @tparam Val Amplitude type that is used in the State 
-     * @param f Encodes the mapping {old D.mode : new Dmode}
-     * @param amp Amplitude for this key before the mapping
-     */
-    template<class Val>
-    inline void collapse(const boost::container::flat_map<Int, Int>& f, Val& amp){
-        Val pre = factor<Val>();
-        Par p;
-        Int a, b, n;
-        std::pair<typename Par::iterator, bool> pib;
-        for (typename Par::iterator it = Par::begin(); it!= Par::end(); it++){
-            a = it->first.first;
-            b = f.at(it->first.second);
-            n = it->second;
-            pib = p.emplace(std::make_pair(std::make_pair(a, b), n));
-            if (!pib.second)
-                pib.first->second += n;
-        }
-        Par::operator= (std::move(p));
-        amp *= factor<Val>()/pre;
-    }    
-
-    /**
      * @brief Checks if the key has at least one photon in on of the modes in allModes.
      * 
      * @param allModes Spatial&Distinguishability modes to check
